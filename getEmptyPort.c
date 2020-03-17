@@ -2,5 +2,5 @@
 #include <stdio.h>
 
 int main(){
-	printf("%d\n",getEmptyPort());
+	printf("%d",getEmptyPort());
 }

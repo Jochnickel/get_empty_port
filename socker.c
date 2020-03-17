@@ -1,4 +1,3 @@
-  GNU nano 2.9.8                                               c.c                                                          
 #include <strings.h>
 #include <stdio.h>
 #include <sys/socket.h>
@@ -29,4 +28,3 @@ int main()
         printf("Local port : %u\n", myPort);
         return 0;
 }
-

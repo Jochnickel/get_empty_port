@@ -1,7 +1,8 @@
 #include <errno.h> // errno
 #include <unistd.h> // sleep, close
 #include <strings.h> // bzero
-#include <error.h> // error
+//#include <error.h> // error
+#include <stdlib.h> // exit
 #include <stdio.h> // puts printf
 #include <arpa/inet.h> //sockaddr_in, INADDR_ANY, htons, ntohs
 
@@ -11,8 +12,11 @@ int main() {
 
  /* create a socket */
  int socket_desc = socket(AF_INET , SOCK_STREAM , 0);
- if (socket_desc<0)
-  error(/*exit code = */-1,/*stderr:*/ 9 /*== Bad file descriptor*/,"Could not create socket");
+ if (socket_desc<0){
+  errno = 9; /* Bad file descriptor */
+  exit(-1);
+  //error(/*exit code = */-1,/*stderr:*/ 9 /*== Bad file descriptor*/,"Could not create socket");
+ }
 
  /* bind the socket */
  struct sockaddr_in server;
@@ -21,7 +25,8 @@ int main() {
  server.sin_port = htons( PORT );
 
  if ( bind(socket_desc,(struct sockaddr *)&server, sizeof(server)) < 0 )
-  error(-1,errno,"bind failed");
+  exit(-1);
+  //error(-1,errno,"bind failed");
 
  /* get the port number */
  struct sockaddr_in my_addr; bzero(&my_addr, sizeof(my_addr));

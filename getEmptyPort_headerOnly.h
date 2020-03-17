@@ -6,7 +6,7 @@
 #include <strings.h> // bzero
 //#include <error.h> // error
 #include <stdlib.h> // exit
-#include <stdio.h> // puts printf
+//#include <stdio.h> // puts printf
 #include <arpa/inet.h> //sockaddr_in, INADDR_ANY, htons, ntohs
 
 #define PORT 0
@@ -39,7 +39,7 @@ int getEmptyPort() {
  unsigned int port = ntohs(my_addr.sin_port);
 
  listen(socket_desc , 3);
- printf("%u", port);// sleep(5);
+ //printf("%u", port);// sleep(5);
 
  close(socket_desc);
  //puts("port closed"); sleep(10);
